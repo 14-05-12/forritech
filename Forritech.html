@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForriTech - Automatización Industrial para Pirotecnia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a1a2e;
+            --secondary: #d4af37;
+            --accent: #c62828;
+            --light: #f5f5f5;
+            --dark: #050a10;
+            --text: #333333;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aX8.woff2) format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aX8.woff2) format('woff2');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--secondary);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-img {
+            height: 80px;
+            margin-right: 1.5rem;
+        }
+        
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aX8.woff2) format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aX8.woff2) format('woff2');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--secondary);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+        
+        .pyro-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        nav {
+            background-color: rgba(10, 26, 46, 0.95);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            margin-bottom: 5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 3rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .comparison-col {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .comparison-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .manual-risk {
+            border-top: 4px solid var(--accent);
+        }
+        
+        .solution {
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 220px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 26, 46, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .cta {
+            text-align: center;
+            padding: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta h2 {
+            color: white;
+            display: inline-block;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta h2::after {
+            background: linear-gradient(to right, white, var(--secondary));
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1.5rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 0.8rem;
+            color: var(--secondary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .pyro-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .pyro-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            opacity: 0;
+            animation: pyro-fall 4s linear infinite;
+        }
+        
+        @keyframes pyro-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 1rem 1rem;
+            }
+            
+            .hero-image {
+                height: 350px;
+            }
+            
+            .cta {
+                padding: 3rem 1.5rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <div class="pyro-effect"></div>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="Logo-Luan.png" width="100" height="10000" alt="ForriTech Logo" class="logo-img">
+                <div class="logo-text">ForriTech</div>
+            </div>
+            <p class="tagline">Tecnología avanzada para la automatización segura y eficiente en la fabricación de pirotecnia</p>
+        </div>
+    </header>
+    
+    
+    <nav>
+        <div class="nav-container">
+            <div class="brand" style="color: white; font-weight: 600; letter-spacing: 1px;">FORRITECH</div>
+            <ul class="nav-links">
+                <li><a href="#problema">Riesgos Manuales</a></li>
+                <li><a href="#solucion">Nuestra Tecnología</a></li>
+                <li><a href="#funcionamiento">Cómo Funciona</a></li>
+                <li><a href="#beneficios">Ventajas</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="problema">
+            <h2>Los Peligros del Forrado Manual en Pirotecnia</h2>
+            <img src="11.jpg" alt="Trabajo manual en pirotecnia" class="hero-image">
+            
+            <p>En la industria pirotécnica, el proceso tradicional de forrado manual de crisantemos presenta múltiples riesgos que comprometen la seguridad de los operarios y la calidad del producto final:</p>
+            
+            <div class="comparison">
+                <div class="comparison-col">
+                    <h3>Riesgos Operativos</h3>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-exclamation-triangle" style="color: var(--accent); margin-right: 0.5rem;"></i> Exposición Directa a Explosivos</h4>
+                        <p>El contacto manual con pólvora y compuestos químicos aumenta exponencialmente el riesgo de ignición accidental, con potencial de quemaduras graves y lesiones permanentes.</p>
+                    </div>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-lungs" style="color: var(--accent); margin-right: 0.5rem;"></i> Inhalación de Partículas</h4>
+                        <p>La manipulación manual genera exposición continua a polvos tóxicos que pueden causar enfermedades respiratorias crónicas y problemas dermatológicos.</p>
+                    </div>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-unstable" style="color: var(--accent); margin-right: 0.5rem;"></i> Inconsistencia en Productos</h4>
+                        <p>Variaciones humanas en densidad y compactación resultan en diferencias de combustión que afectan el desempeño y seguridad de los artefactos.</p>
+                    </div>
+                </div>
+                
+                <div class="comparison-col">
+                    <h3>Impacto Económico</h3>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-clock" style="color: var(--accent); margin-right: 0.5rem;"></i> Ineficiencia Productiva</h4>
+                        <p>El proceso manual limita la producción a 8-10 unidades por hora por operario, generando cuellos de botella en temporadas altas.</p>
+                    </div>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-money-bill-wave" style="color: var(--accent); margin-right: 0.5rem;"></i> Costos Laborales Elevados</h4>
+                        <p>Requiere personal altamente especializado con salarios premium debido al alto riesgo asociado a las operaciones manuales.</p>
+                    </div>
+                    
+                    <div class="comparison-item manual-risk">
+                        <h4><i class="fas fa-chart-line-down" style="color: var(--accent); margin-right: 0.5rem;"></i> Pérdida de Materiales</h4>
+                        <p>Estimado del 15-20% de merma por derrames, dosificación inexacta y errores humanos en el proceso manual.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solucion">
+            <h2>ForriTech: Innovación en Automatización Pirotécnica</h2>
+            <img src="15.png" alt="Tecnología automatizada" class="hero-image">
+            
+            <p>Nuestra solución revolucionaria elimina los riesgos del proceso manual mediante un sistema automatizado de última generación diseñado específicamente para la fabricación segura de crisantemos pirotécnicos.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Seguridad Industrial</h3>
+                    <ul>
+                        <li>Elimina el contacto humano con materiales peligrosos</li>
+                        <li>Sistema de enclavamiento de seguridad certificado</li>
+                        <li>Cámaras de contención para manipulación segura</li>
+                        <li>Reducción del 98% en accidentes laborales</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Eficiencia Productiva</h3>
+                    <ul>
+                        <li>Capacidad de 30-35 unidades por minuto</li>
+                        <li>Operación continua 24/7 con supervisión mínima</li>
+                        <li>Cambio rápido entre modelos y configuraciones</li>
+                        <li>Integración con sistemas ERP/MES</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Precisión Científica</h3>
+                    <ul>
+                        <li>Dosificación con tolerancia de ±0.05 gramos</li>
+                        <li>Sensores láser para control dimensional</li>
+                        <li>Sistema de pesaje de alta precisión</li>
+                        <li>Uniformidad garantizada en cada producto</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="funcionamiento">
+            <h2>Tecnología de Vanguardia</h2>
+            
+            <div class="comparison">
+                <div class="comparison-col">
+                    <h3><i class="fas fa-cogs" style="color: var(--secondary); margin-right: 0.7rem;"></i> Sistema Mecánico</h3>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Alimentación Automatizada</h4>
+                        <p>Sistema vibratorio de alta precisión para dosificación de componentes químicos con corrección automática de desviaciones.</p>
+                    </div>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Forrado Robótico</h4>
+                        <p>Brazos robóticos de 6 ejes con pinzas especializadas para manipulación segura de materiales explosivos.</p>
+                    </div>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Control de Calidad Integrado</h4>
+                        <p>Estación de inspección automatizada con visión artificial para verificar dimensiones, densidad y uniformidad.</p>
+                    </div>
+                </div>
+                
+                <div class="comparison-col">
+                    <h3><i class="fas fa-laptop-code" style="color: var(--secondary); margin-right: 0.7rem;"></i> Plataforma Digital</h3>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Interfaz Intuitiva</h4>
+                        <p>Panel de control táctil con visualización 3D del proceso y alertas predictivas de mantenimiento.</p>
+                    </div>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Monitoreo Remoto</h4>
+                        <p>Acceso web seguro para supervisar producción, recibir alertas y ajustar parámetros desde cualquier ubicación.</p>
+                    </div>
+                    
+                    <div class="comparison-item solution">
+                        <h4>Analítica Avanzada</h4>
+                        <p>Generación automática de reportes OEE, análisis de tendencias y optimización de parámetros mediante IA.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Diagrama de funcionamiento ForriTech" style="max-width: 800px; width: 100%; border-radius: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.1);">
+                <p style="margin-top: 1rem; font-style: italic; color: var(--text); opacity: 0.8;">Diagrama del sistema ForriTech mostrando el flujo de producción automatizado</p>
+            </div>
+        </section>
+        
+        <section id="beneficios">
+            <h2>Ventajas Competitivas</h2>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Beneficios Operativos</h3>
+                    <ul>
+                        <li><strong>+400%</strong> aumento en capacidad productiva</li>
+                        <li><strong>95%</strong> reducción en tiempo de configuración</li>
+                        <li><strong>99.8%</strong> consistencia en calidad</li>
+                        <li><strong>30%</strong> menor consumo energético</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Ventajas Económicas</h3>
+                    <ul>
+                        <li><strong>ROI</strong> en 8-12 meses</li>
+                        <li><strong>60%</strong> reducción en costos laborales</li>
+                        <li><strong>25%</strong> ahorro en materiales</li>
+                        <li><strong>50%</strong> menos seguros y multas</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
+                    <h3>Ventajas Competitivas</h3>
+                    <ul>
+                        <li>Certificaciones internacionales de seguridad</li>
+                        <li>Capacidad para cumplir grandes pedidos</li>
+                        <li>Diferenciación en calidad consistente</li>
+                        <li>Adaptabilidad a normativas cambiantes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cta">
+                <div class="pyro-animation" id="pyro-animation"></div>
+                <div class="cta-content">
+                    <h2>Transforma tu Producción Pirotécnica</h2>
+                    <p style="max-width: 700px; margin: 0 auto 1.5rem; font-size: 1.1rem;">ForriTech ofrece la solución más avanzada para fabricación segura, eficiente y rentable de crisantemos de alta calidad.</p>
+                    <a href="#contacto" class="btn">Solicitar Demostración <i class="fas fa-chevron-right" style="margin-left: 0.5rem;"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="galeria">
+            <h2>Nuestros Resultados</h2>
+            <p>Ejemplos de productos fabricados con tecnología ForriTech:</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="12.jpg" alt="Crisantemo profesional">
+                </div>
+                <div class="gallery-item">
+                    <img src="13.jpg" alt="Fuegos artificiales de colores">
+                </div>
+                <div class="gallery-item">
+                    <img src="15.png" alt="Show pirotécnico">
+                </div>
+                <div class="gallery-item">
+                    <img src="16.jpg" alt="Producción automatizada">
+                </div>
+                <div class="gallery-item">
+                    <img src="11.jpg" alt="Tecnología industrial">
+                </div>
+                <div class="gallery-item">
+                    <img src="14.jpg" alt="Fábrica moderna">
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p style="max-width: 700px; margin-bottom: 2rem;">Contáctenos para una demostración personalizada o más información sobre cómo ForriTech puede transformar su operación pirotécnica.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem;">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Información de Contacto</h3>
+                    
+                    <div class="contact-info">
+                        <p><i class="fas fa-globe"></i> <strong>Sitio web:</strong> www.forritech.com</p>
+                        <p><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> 722 420 2599</p>
+                        <p><i class="fas fa-user-tie"></i> <strong>Contacto:</strong> Luan G. Fuentes</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> Tultepec, Estado de México</p>
+                    </div>
+                    
+                    <h4 style="margin: 2rem 0 1rem; color: var(--primary);">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Formulario de Contacto</h3>
+                    <form style="display: grid; gap: 1.2rem;">
+                        <div>
+                            <label for="nombre" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Nombre Completo*</label>
+                            <input type="text" id="nombre" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+                        </div>
+                        
+                        <div>
+                            <label for="empresa" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Empresa</label>
+                            <input type="text" id="empresa" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+                        </div>
+                        
+                        <div>
+                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Correo Electrónico*</label>
+                            <input type="email" id="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+                        </div>
+                        
+                        <div>
+                            <label for="telefono" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Teléfono</label>
+                            <input type="tel" id="telefono" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+                        </div>
+                        
+                        <div>
+                            <label for="mensaje" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Mensaje*</label>
+                            <textarea id="mensaje" rows="4" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
+                            Enviar Mensaje <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">ForriTech</div>
+                <p>Tecnología de vanguardia para la automatización segura y eficiente en la industria pirotécnica. Innovamos para proteger vidas y optimizar procesos.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#problema">Riesgos del Método Manual</a></li>
+                    <li><a href="#solucion">Nuestra Tecnología</a></li>
+                    <li><a href="#funcionamiento">Cómo Funciona</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-globe"></i> www.forritech.com</p>
+                    <p><i class="fas fa-phone-alt"></i> 722 420 2599</p>
+                    <p><i class="fas fa-envelope"></i> contacto@forritech.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tultepec, Estado de México</p>
+                </div>
+                
+                <h4 style="margin-top: 1.5rem;">Redes Sociales</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ForriTech. Todos los derechos reservados. | Diseñado por Luan G. Fuentes</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de partículas pirotécnicas
+        document.addEventListener('DOMContentLoaded', function() {
+            const animationContainer = document.getElementById('pyro-animation');
+            const colors = ['#d4af37', '#c62828', '#ffffff', '#ffab00'];
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.classList.add('pyro-particle');
+                
+                // Posición aleatoria
+                const posX = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                
+                // Color aleatorio
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                
+                // Tamaño aleatorio
+                const size = 2 + Math.random() * 4;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Duración de animación aleatoria
+                const duration = 3 + Math.random() * 3;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Retraso aleatorio
+                particle.style.animationDelay = `${Math.random() * 2}s`;
+                
+                animationContainer.appendChild(particle);
+                
+                // Eliminar partícula después de la animación
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+            
+            // Crear partículas continuamente
+            setInterval(createParticle, 100);
+            
+            // Crear explosión inicial
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createParticle, i * 30);
+            }
+        });
+    </script>
+</body>
+</html>
